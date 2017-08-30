@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="./store.js"></script>
+</head>
+<body>
+<script>
+  let cookieStore = new Store('cookie');
+  cookieStore.setItem('packageName', 'store');
+  cookieStore.setItem('author', 'xiaobxia');
+  console.log('cookie1 ', cookieStore.getItem('packageName'));
+  console.log('cookie2 ', cookieStore.getItem('author'));
+  console.log('cookie all ', cookieStore.getAllItem());
+  cookieStore.removeItem('packageName');
+  cookieStore.removeItem('author');
+  console.log('cookie1 remove ', cookieStore.getItem('packageName'));
+  console.log('cookie2 remove', cookieStore.getItem('author'));
+  cookieStore.setItem('packageName', 'store');
+  cookieStore.setItem('author', 'xiaobxia');
+  cookieStore.clearAll();
+  console.log('cookie all ', cookieStore.getAllItem());
+</script>
+</body>
+</html>
