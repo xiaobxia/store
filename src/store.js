@@ -91,7 +91,6 @@
       }
     }
 
-
     getSessionStorage() {
       if (typeof sessionStorage === "object") {
         return sessionStorage;
