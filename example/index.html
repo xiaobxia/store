@@ -21,6 +21,34 @@
   cookieStore.setItem('author', 'xiaobxia');
   cookieStore.clearAll();
   console.log('cookie all ', cookieStore.getAllItem());
+  let sessionStore = new Store('session');
+  sessionStore.setItem('packageName', 'store');
+  sessionStore.setItem('author', 'xiaobxia');
+  console.log('session1 ', sessionStore.getItem('packageName'));
+  console.log('session2 ', sessionStore.getItem('author'));
+  console.log('session all ', sessionStore.getAllItem());
+  sessionStore.removeItem('packageName');
+  sessionStore.removeItem('author');
+  console.log('session1 remove ', sessionStore.getItem('packageName'));
+  console.log('session2 remove', sessionStore.getItem('author'));
+  sessionStore.setItem('packageName', 'store');
+  sessionStore.setItem('author', 'xiaobxia');
+  sessionStore.clearAll();
+  console.log('session all ', sessionStore.getAllItem());
+  let localStore = new Store('local');
+  localStore.setItem('packageName', 'store');
+  localStore.setItem('author', 'xiaobxia');
+  console.log('local1 ', localStore.getItem('packageName'));
+  console.log('local2 ', localStore.getItem('author'));
+  console.log('local all ', localStore.getAllItem());
+  localStore.removeItem('packageName');
+  localStore.removeItem('author');
+  console.log('local1 remove ', localStore.getItem('packageName'));
+  console.log('local2 remove', localStore.getItem('author'));
+  localStore.setItem('packageName', 'store');
+  localStore.setItem('author', 'xiaobxia');
+  localStore.clearAll();
+  console.log('local all ', localStore.getAllItem());
 </script>
 </body>
 </html>
