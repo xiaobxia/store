@@ -5,8 +5,11 @@
 <!--在head引入store.js-->
 <script src="./store.js"></script>
 <script>
+  //for cookie
   var cookieStore = new Store('cookie');
+  //for sessionStorage
   var sessionStore = new Store('session');
+  //for localStorage
   var localStore = new Store('local');
 </script>
 ```
