@@ -15,6 +15,14 @@
       }
     }
 
+    getData(list) {
+      let values = [];
+      for (let k = 0, len = list.length; k < len; k++) {
+        values.push(this.getItem(list[k]));
+      }
+      return values;
+    }
+
     getItem(key) {
       let store = this.$store;
       if (this.storeType !== 'cookie') {
@@ -32,6 +40,14 @@
         cookieValue = decodeURIComponent(document.cookie.substring(cookieStart + cookieName.length, cookieEnd));
       }
       return cookieValue;
+    }
+
+    setData(data, option) {
+      for (let key in data) {
+        if (data.hasOwnProperty(key)) {
+          this.setItem(key, data[key], option);
+        }
+      }
     }
 
     setItem(key, value, option) {

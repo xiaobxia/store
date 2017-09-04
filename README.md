@@ -14,8 +14,14 @@
 </script>
 ```
 ## 方法
+#### getData(list)
+获取项的集合，list是key的集合
 #### getItem(key)
 获取项
+#### getAllItem()
+获取所有项
+#### setData(data[, option])
+设置，data是key-value对象，如果是cookieStore，提供了可选的option参数
 #### setItem(key, value[, option])
 设置项，如果是cookieStore，提供了可选的option参数
 - **option**
@@ -25,7 +31,5 @@
   - secure
 #### removeItem(key)
 移除项
-#### getAllItem()
-获取所有项
 #### clearAll()
 移除所有项

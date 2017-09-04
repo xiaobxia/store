@@ -26,6 +26,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }
 
     _createClass(Store, [{
+      key: 'getData',
+      value: function getData(list) {
+        var values = [];
+        for (var k = 0, len = list.length; k < len; k++) {
+          values.push(this.getItem(list[k]));
+        }
+        return values;
+      }
+    }, {
       key: 'getItem',
       value: function getItem(key) {
         var store = this.$store;
@@ -44,6 +53,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           cookieValue = decodeURIComponent(document.cookie.substring(cookieStart + cookieName.length, cookieEnd));
         }
         return cookieValue;
+      }
+    }, {
+      key: 'setData',
+      value: function setData(data, option) {
+        for (var key in data) {
+          if (data.hasOwnProperty(key)) {
+            this.setItem(key, data[key], option);
+          }
+        }
       }
     }, {
       key: 'setItem',

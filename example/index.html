@@ -21,6 +21,13 @@
   cookieStore.setItem('author', 'xiaobxia');
   cookieStore.clearAll();
   console.log('cookie all ', cookieStore.getAllItem());
+  cookieStore.setData({
+    packageName: 'store',
+    author: 'xiaobxia'
+  });
+  console.log('cookie getData ', cookieStore.getData(['packageName', 'author']));
+
+
   let sessionStore = new Store('session');
   sessionStore.setItem('packageName', 'store');
   sessionStore.setItem('author', 'xiaobxia');
@@ -35,6 +42,13 @@
   sessionStore.setItem('author', 'xiaobxia');
   sessionStore.clearAll();
   console.log('session all ', sessionStore.getAllItem());
+  sessionStore.setData({
+    packageName: 'store',
+    author: 'xiaobxia'
+  });
+  console.log('session getData ', sessionStore.getData(['packageName', 'author']));
+
+
   let localStore = new Store('local');
   localStore.setItem('packageName', 'store');
   localStore.setItem('author', 'xiaobxia');
@@ -49,6 +63,13 @@
   localStore.setItem('author', 'xiaobxia');
   localStore.clearAll();
   console.log('local all ', localStore.getAllItem());
+  localStore.setData({
+    packageName: 'store',
+    author: 'xiaobxia'
+  });
+  console.log('local getData ', localStore.getData(['packageName', 'author']));
+
+
 </script>
 </body>
 </html>
