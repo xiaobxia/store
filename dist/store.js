@@ -10,6 +10,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  * Created by xiaobxia on 2017/8/30.
  */
 (function () {
+  var COOKIE_KEY = /[^ =;]+(?=\=)/g;
+
   var Store = function () {
     //默认使用webStorage，如果传参cookie那就使用cookie
     function Store(storeType) {
@@ -39,7 +41,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: function getItem(key) {
         var store = this.$store;
         if (this.storeType !== 'cookie') {
-          return store.getItem(key);
+          return store.getItem(key) || '';
         }
         var cookieName = encodeURIComponent(key) + '=',
             cookieStart = document.cookie.indexOf(key),
@@ -107,9 +109,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }
           return list;
         }
-        var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
+        var keys = document.cookie.match(COOKIE_KEY);
         for (var k = 0, len = keys.length; k < len; k++) {
-          list.push({ key: keys[k], value: this.getItem(keys[k]) });
+          var value = this.getItem(keys[k]);
+          if (value) {
+            list.push({ key: keys[k], value: this.getItem(keys[k]) });
+          }
         }
         return list;
       }
@@ -119,7 +124,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         if (this.storeType !== 'cookie') {
           return this.$store.clear();
         }
-        var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
+        var keys = document.cookie.match(COOKIE_KEY);
         for (var k = 0, len = keys.length; k < len; k++) {
           this.removeItem(keys[k]);
         }

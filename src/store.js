@@ -2,6 +2,7 @@
  * Created by xiaobxia on 2017/8/30.
  */
 (function () {
+  const COOKIE_KEY = /[^ =;]+(?=\=)/g;
   class Store {
     //默认使用webStorage，如果传参cookie那就使用cookie
     constructor(storeType) {
@@ -26,7 +27,7 @@
     getItem(key) {
       let store = this.$store;
       if (this.storeType !== 'cookie') {
-        return store.getItem(key);
+        return store.getItem(key) || '';
       }
       let cookieName = encodeURIComponent(key) + '=',
         cookieStart = document.cookie.indexOf(key),
@@ -90,9 +91,12 @@
         }
         return list;
       }
-      let keys = document.cookie.match(/[^ =;]+(?=\=)/g);
+      let keys = document.cookie.match(COOKIE_KEY);
       for (let k = 0, len = keys.length; k < len; k++) {
-        list.push({key: keys[k], value: this.getItem(keys[k])});
+        let value = this.getItem(keys[k]);
+        if (value) {
+          list.push({key: keys[k], value: this.getItem(keys[k])});
+        }
       }
       return list;
     }
@@ -101,7 +105,7 @@
       if (this.storeType !== 'cookie') {
         return this.$store.clear();
       }
-      let keys = document.cookie.match(/[^ =;]+(?=\=)/g);
+      let keys = document.cookie.match(COOKIE_KEY);
       for (let k = 0, len = keys.length; k < len; k++) {
         this.removeItem(keys[k]);
       }
